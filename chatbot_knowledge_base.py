@@ -72,8 +72,8 @@ def respond(input_text):
         for value in values:
             st.write(value)
         st.write("")
-        st.button("Clear Input", on_click=lambda: st.text_input(
-            "Enter your query here:", value=""))
+        # st.button("Clear Input", on_click=lambda: st.text_input(
+        #     "Enter your query here:", value=""))
     else:
         st.write("Question is not present in the knowledge base!")
         answer = st.text_input(
