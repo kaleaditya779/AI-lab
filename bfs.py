@@ -17,7 +17,7 @@ The algorithm for BFS:
 from  collections import deque
 
 # creating the data structures required for bfs:
-visited = list() # to store the vertex which is visited
+visited = set() # to store the vertex which is visited
 que = deque() # to store the vertices in seqence to be visited
 graph = {
     1: [2,3,4],
@@ -30,23 +30,25 @@ graph = {
 }
 
 def bfs_traversal(initial_vertex):
-    visited.append(initial_vertex)
+    visited.add(initial_vertex)
     que.append(initial_vertex)
 
     while (que):
         vertex_to_explore = que.popleft()
+        print(vertex_to_explore, end=" ") # process the vertex
 
         # here we iterate (explore the selected vertex)
         for vert in graph[vertex_to_explore]:
             if vert not in visited:
-                visited.append(vert)
+                visited.add(vert)
                 que.append(vert)
-    print("The BFS sequence is: ",visited)
+    print("\nThe nodes/vertices visited using BFS (not in the sequence of visit):",visited)
 
 def main():
 
     start_vertex = int(input("Input the vertex to start with: "))
     bfs_traversal(start_vertex)
+    print("If you want to store the sequence in which the vertices are visited, just change the visited to list() and add() to append()")
 
 if __name__ == "__main__":
     main()

@@ -15,19 +15,24 @@ graph = {
 
 def dfs_iterative(initial_vert):
     stack.append(initial_vert)
-    visited.add(initial_vert)
 
     while stack:
         vert = stack.pop()
-        for adjacent in graph[vert]:
-            if adjacent not in visited:
-                stack.append(adjacent)
-                visited.add(adjacent)
+        if vert not in visited:
+            visited.add(vert)
+            print(vert, end=" ") # process the node
+
+            # Push unvisited neighbors onto the stack
+            for adjacent in graph[vert]:
+                if adjacent not in visited:
+                    stack.append(adjacent)
+
 
 def main():
     verti = int(input("Enter the starting vertex: "))
     dfs_iterative(verti)
-    print("The nodes/vertices visited using DFS (not in the sequence of visit):", visited)
+    print("\nThe nodes/vertices visited using DFS (not in the sequence of visit):", visited)
+    print("If you want to store the sequence in which the vertices are visited, just change the visited to list() and add() to append()")
 
 if __name__ == "__main__":
     main()
